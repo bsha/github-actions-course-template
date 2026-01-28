@@ -1,2 +1,19 @@
 name: Team approval workflow
 on: pull_request_review
+
+jobs:
+  labelWhenApproved:
+    runs-on: ubuntu-latest
+    steps:
+      - name: label-when-approved
+        # You may pin to the exact commit or the version.
+        # uses: realstealthninja/label-when-approved@9f358482e19305f77f39a099d0cd90a507bd6317
+        uses: realstealthninja/label-when-approved@v1.0.0
+        with:
+          # github token
+          secret: ${{ secrets.GITHUB_TOKEN }}
+          # name of label
+          label: "approved"
+          # the number of approvals required for this label to be applied
+          approvals: "1"
+                  
